@@ -6,12 +6,12 @@
 /*   By: adorigo <adorigo@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:17:48 by adorigo           #+#    #+#             */
-/*   Updated: 2021/04/28 18:13:39 by adorigo          ###   ########.fr       */
+/*   Updated: 2021/04/28 18:16:07 by adorigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
 #include "checker.h"
 
 t_input	*get_input()
@@ -23,9 +23,15 @@ t_input	*get_input()
 	int ret;
 
 	ret = 1;
+	
 	while (ret > 0)
 	{
 		ret = get_next_line(STDIN_FILENO, &line);
+		if (line[0] != '\0')
+		{
+			check_instruction(line);
+			ft_strdup()
+		}
 		
 	}
 }
