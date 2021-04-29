@@ -6,9 +6,12 @@
 /*   By: adorigo <adorigo@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:43:22 by adorigo           #+#    #+#             */
-/*   Updated: 2021/04/28 18:12:15 by adorigo          ###   ########.fr       */
+/*   Updated: 2021/04/29 18:29:44 by adorigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
 
 typedef struct	s_input
 {

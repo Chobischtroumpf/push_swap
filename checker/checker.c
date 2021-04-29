@@ -6,37 +6,18 @@
 /*   By: adorigo <adorigo@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:17:48 by adorigo           #+#    #+#             */
-/*   Updated: 2021/04/28 18:16:07 by adorigo          ###   ########.fr       */
+/*   Updated: 2021/04/29 18:36:04 by adorigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "checker.h"
 
-t_input	*get_input()
+int	is_sorted()
 {
-	t_input	*beginning;
-	t_input	*iter;
-	char	*line;
-	char	*tmp;
-	int ret;
-
-	ret = 1;
 	
-	while (ret > 0)
-	{
-		ret = get_next_line(STDIN_FILENO, &line);
-		if (line[0] != '\0')
-		{
-			check_instruction(line);
-			ft_strdup()
-		}
-		
-	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -65,4 +46,10 @@ int main(int argc, char **argv)
 				return(free_stacks());
 		}
 	}
+	checker->instructions = get_input();
+	if (!checker->instructions)
+		ft_putstr_fd("");
+	exec_instruction();
+	if (is_sorted())
+		ft_putstr_fd("OK\n", 1)
 }
