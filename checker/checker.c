@@ -3,18 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adorigo <adorigo@student.s19.be>           +#+  +:+       +#+        */
+/*   By: adorigo <adorigo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:17:48 by adorigo           #+#    #+#             */
-/*   Updated: 2021/04/29 18:36:04 by adorigo          ###   ########.fr       */
+/*   Updated: 2021/04/30 17:04:13 by adorigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	is_sorted()
+exec_instruction(t_checker *checker)
 {
-	
+	t_input	*inputs;
+
+	inputs = get_instructions(checker);
+	while (inputs)
+	{
+
+	}
+}
+
+int	is_sorted(t_checker *checker)
+{
+	int i;
+
+	i = 0;
+	if (checker->stack_b[i] != '\0')
+	{
+		while(checker->stack_a[i] && checker->stack_a[i + 1])
+		{
+			if (checker->stack_a[i] > checker->stack_a[i + 1])
+				return (0);
+			i++;
+		}
+	}
+	else
+		return (0);
+	return (1);	
 }
 
 int	main(int argc, char **argv)
@@ -25,8 +50,12 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	j = 0;
-	checker->stack_a = ft_calloc(ft_size_argv(argv), sizeof(int));
-	checker->stack_b = ft_calloc(ft_size_argv(argv), sizeof(int));
+	if (argc < 2)
+		return (1);
+	checker->stack_a = ft_calloc(argc, sizeof(int));
+	checker->stack_b = ft_calloc(argc, sizeof(int));
+	checker->size = argc - 1;
+	checker->len_a = checker->size;
 	if (!checker->stack_a || !checker->stack_b)
 		return (ft_exit_error());
 	while (argv[i])
@@ -48,8 +77,13 @@ int	main(int argc, char **argv)
 	}
 	checker->instructions = get_input();
 	if (!checker->instructions)
-		ft_putstr_fd("");
-	exec_instruction();
-	if (is_sorted())
-		ft_putstr_fd("OK\n", 1)
+		ft_putstr_fd("ERROR\n");
+	else
+	{
+		exec_instruction(checker);
+		if (is_sorted(checker))
+			ft_putstr_fd("OK\n", 1);
+		else
+			ft_putstr_fd("KO\n", 1);		
+	}
 }
