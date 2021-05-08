@@ -3,19 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   utilities.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adorigo <adorigo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adorigo <adorigo@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 11:24:34 by adorigo           #+#    #+#             */
-/*   Updated: 2021/04/27 15:10:08 by adorigo          ###   ########.fr       */
+/*   Updated: 2021/05/08 10:33:31 by adorigo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDES_H
 # define INCLUDES_H
 
-#include "libft/includes/libft.h"
-#include <string.h>
-#include <stdio.h>
+# include "libft/includes/libft.h"
+# include "checker.h"
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+typedef struct	s_input
+{
+	char	*input;
+	void	(*exec)(int *, int *);
+	struct s_input	*next;
+}	t_input;
 
 typedef struct s_swap
 {
@@ -25,6 +35,10 @@ typedef struct s_swap
 	int	count : 16;
 	int	*stack_a;
 	int	*stack_b;
+	int	size;
+	int	len_a;
+	int	len_b;
+	t_input	*instructions;
 }	t_swap;
 
 t_swap	*ft_get_context(void);
